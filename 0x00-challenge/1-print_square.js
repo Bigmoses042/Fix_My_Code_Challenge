@@ -1,36 +1,23 @@
-1. Print square
-# advanced
-Please take a look at my implementation of printing a square in Javascript: source code
+#!/usr/bin/node
+/*
+    Print a square with the character #
+    The size of the square must be the first argument 
+    of the program.
+*/
 
-Something is going wrong….
 
-$ ./1-print_square.js 4
-####
-####
-####
-####
-$ ./1-print_square.js 10
-################
-################
-################
-################
-################
-################
-################
-################
-################
-################
-################
-################
-################
-################
-################
-################
-$
-./1-print_square.js 10 should print a square of size 10…
+if (process.argv.length <= 2) {
+    process.stderr.write("Missing argument\n");
+    process.stderr.write("Usage: ./1-print_square.js <size>\n");
+    process.stderr.write("Example: ./1-print_square.js 8\n");
+    process.exit(1)
+}
 
-# Repo:
+size = parseInt(process.argv[2], 10)
 
-* GitHub repository: Fix_My_Code_Challenge
-* Directory: 0x00-challenge
-* File: 1-print_square.js
+for (let i = 0 ; i < size ; i ++) {
+    for (let j = 0 ; j < size ; j ++) {
+        process.stdout.write("#");
+    }
+    process.stdout.write("\n");
+}

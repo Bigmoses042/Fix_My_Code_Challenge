@@ -1,20 +1,31 @@
-# 2. Sort
-## advanced
-Please find here my implementation of sorting arguments in Ruby: source code
+###
+#
+#  Sort integer arguments (ascending)
+#
+###
 
-Something is going wrong….
+result = []
+ARGV.each do |arg|
+    # skip if not integer
+    next if arg !~ /^-?[0-9]+$/
 
-$ ruby 2-sort.rb 12 41 2 C 9 -9 31 fun -1 32
-31
-32
-12
-41
-2
-9
--9
--1
-<p>$</p>
-## Repo:
-* GitHub repository: Fix_My_Code_Challenge
-* Directory: 0x00-challenge
-* File: 2-sort.rb
+    # convert to integer
+    i_arg = arg.to_i
+
+    # insert result at the right position
+    is_inserted = false
+    i = 0
+    l = result.size
+    while !is_inserted && i < l do
+        if result[i] < i_arg
+            i += 1
+        else
+            result.insert(i, i_arg)
+            is_inserted = true
+            break
+        end
+    end
+    result << i_arg if !is_inserted
+end
+
+puts result

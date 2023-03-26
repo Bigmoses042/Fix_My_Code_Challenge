@@ -1,18 +1,38 @@
-# 0. FizzBuzz
+#!/usr/bin/python3
+""" FizzBuzz
+"""
+import sys
 
-# advanced
 
-Please take a look at my implementation of FizzBuzz in Python: source code
-Something is going wrong….
+def fizzbuzz(n):
+    """
+    FizzBuzz function prints numbers from 1 to n separated by a space.
+    - For multiples of three print "Fizz" instead of the number and for
+      multiples of five print "Buzz".
+    - For numbers which are multiples of both three and five print "FizzBuzz".
+    """
+    if n < 1:
+        return
 
-$ ./0-fizzbuzz.py 50
+    tmp_result = []
+    for i in range(1, n + 1):
+        if (i % 3) == 0 and (i % 5) == 0:
+            tmp_result.append("FizzBuzz")
+        elif (i % 3) == 0:
+            tmp_result.append("Fizz")
+        elif (i % 5) == 0:
+            tmp_result.append("Buzz")
+        else:
+            tmp_result.append(str(i))
+    print(" ".join(tmp_result))
 
-1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 Fizz 16 17 Fizz 19 Buzz Fizz 22 23 Fizz Buzz 26 Fizz 28 29 Fizz 31 32 Fizz 34 Buzz Fizz 37 38 Fizz Buzz 41 Fizz 43 44 Fizz 46 47 Fizz 49 Buzz
-$
 
-15 should print FizzBuzz not Fizz
+if __name__ == '__main__':
+    if len(sys.argv) <= 1:
+        print("Missing number")
+        print("Usage: ./0-fizzbuzz.py <number>")
+        print("Example: ./0-fizzbuzz.py 89")
+        sys.exit(1)
 
-# Repo:
-* GitHub repository: Fix_My_Code_Challenge
-* Directory: 0x00-challenge
-* File: 0-fizzbuzz.py
+    number = int(sys.argv[1])
+    fizzbuzz(number)
